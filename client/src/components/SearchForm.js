@@ -22,37 +22,61 @@ export const useStyles = makeStyles(theme => ({
   }
 }));
 const initialFormValues = {
-  email: "",
-  username: ""
+    database: "",
+
 };
-export default function SearchForm() {
+export default function SearchForm(props) {
   const classes = useStyles();
 
-  const formCallback = () => {
+  const formCallback = (e) => {
     // do something
+    console.log("do something", props)
   };
+//   const [fakeValue, setFakeValue] = useState(0)
   const [values, handleChanges, handleSubmit, clearForm] = useForm(
     "signUpForm",
     initialFormValues,
     formCallback
   );
 
+  const printData = (props) => {
+      // not being called again
+    console.log("get messages")
+    console.log(props.myData)
+
+    if(props.myData === undefined)
+    {
+    }
+    else
+    {
+        console.log(props.myData.length)
+        if(props.length > 0)
+        {
+          return (props.myData.map(woman => (
+              <p>{woman.name}</p>
+          ))
+          )
+        }
+    }
+
+  }
   return (
-    <div p={2} className="form">
+      <div>
+          <div p={2} className="form">
       <form onSubmit={handleSubmit}>
         <fieldset>
-          <legend>Add New Client</legend>
+          <legend>search for database</legend>
           <TextField
             id="outlined-name"
-            label="Username"
+            label="database"
             className={classes.textField}
-            value={values.username}
+            value={values.database}
             onChange={handleChanges}
             margin="normal"
             variant="outlined"
-            name="username"
+            name="database"
           />
-          <TextField
+          {/* <TextField
             id="outlined-name"
             label="email"
             className={classes.textField}
@@ -61,7 +85,7 @@ export default function SearchForm() {
             margin="normal"
             variant="outlined"
             name="email"
-          />
+          /> */}
           <Button color="blue" type="submit">
             Submit
           </Button>
@@ -70,7 +94,13 @@ export default function SearchForm() {
           </Button>
         </fieldset>
       </form>
+
     </div>
+
+    {printData(props)}
+    {/* {setFakeValue(1)} */}
+      </div>
+    
   );
 }
 

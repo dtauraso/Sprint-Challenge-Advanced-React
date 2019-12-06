@@ -7,3 +7,19 @@ it('renders without crashing', () => {
   ReactDOM.render(<App />, div);
   ReactDOM.unmountComponentAtNode(div);
 });
+
+
+// test for displays
+test('testing search title', () => {
+  const { getByTestId } = render(<App />);
+  const linkElement = getByTestId(/search-title/i);
+  // console.log(linkElement)
+  expect(linkElement).toBeInTheDocument();
+});
+
+// test('test', () => {
+//   const { getByTestId } = render(<App />);
+//   const linkElement = getByTestId(/strikes/i);
+//   // console.log(linkElement)
+//   expect(linkElement).toBeInTheDocument();
+// });

@@ -17,7 +17,7 @@ export const useForm = (key, initialValues, cb) => {
   const handleSubmit = e => {
     if (e) e.preventDefault();
     // console.log("it worked");
-    cb();
+    cb(values);
   };
 
   const clearForm = e => {
