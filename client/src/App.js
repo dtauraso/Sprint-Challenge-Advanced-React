@@ -34,11 +34,11 @@ class App extends React.Component {
 
     axios.get("https://api.icndb.com/jokes/")
     .then(res => {
-      console.log(res)
+      // console.log(res)
       this.setState({chuckNorisJokes: res.data.value})
     })
     .catch(err => console.log(err))
-    console.log("data from api", this.state)
+    // console.log("data from api", this.state)
     window.addEventListener("resize", this.handleResize)
 
 
@@ -46,8 +46,8 @@ class App extends React.Component {
   
   showWomen = () => {
     if(this.state.myData.length > 0) {
-      let nameId = this.state.myData.filter(women => women.id < 20).map(women => ({name: women.name, id: women.id, search: women.searches}))
-      console.log("name id", nameId)
+      let nameId = this.state.myData.filter(women => women.id < 30).map(women => ({name: women.name, id: women.id, search: women.searches}))
+      // console.log("name id", nameId)
       // console.log("world cup", this.state.myData)
       // return this.state.myData.map(women => 
       // <div>
@@ -70,19 +70,20 @@ class App extends React.Component {
   showJokes = () => {
     if(this.state.chuckNorisJokes.length > 0) {
       // console.log("world cup", this.state.myData)
+      // the replaces didn't work
       let newJokes = this.state.chuckNorisJokes.map(joke => joke.joke.replace('&quot;', '\"'))
-      console.log("new jokes", newJokes)
+      // console.log("new jokes", newJokes)
       return newJokes.map(joke => <p>{joke}</p>)
     }
 
   }
   render() {
 
-    console.log("data from api", this.state)
+    // console.log("data from api", this.state)
 
     if(this.state.myData.length > 0) {
-      console.log("world cup", this.state.myData)
-      console.log("jokes", this.state.chuckNorisJokes)
+      // console.log("world cup", this.state.myData)
+      // console.log("jokes", this.state.chuckNorisJokes)
 
     }
 
@@ -91,6 +92,7 @@ class App extends React.Component {
       <div className="App">
         {/* form will be fake */}
         <SearchForm props={this.state}/>
+        {/* the tests can't seem to find any elements returned by these functions */}
         {this.showWomen()}
         {this.showJokes()}
         {/* form to pick the dataset */}

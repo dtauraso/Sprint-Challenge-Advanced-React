@@ -41,15 +41,15 @@ export default function SearchForm(props) {
 
   const printData = (props) => {
       // not being called again
-    console.log("get messages")
-    console.log(props.myData)
+    // console.log("get messages")
+    // console.log(props.myData)
 
     if(props.myData === undefined)
     {
     }
     else
     {
-        console.log(props.myData.length)
+        // console.log(props.myData.length)
         if(props.length > 0)
         {
           return (props.myData.map(woman => (
@@ -65,8 +65,9 @@ export default function SearchForm(props) {
           <div p={2} className="form">
       <form onSubmit={handleSubmit}>
         <fieldset>
-          <legend>search for database</legend>
+          <legend data-testid="search-title">search for database</legend>
           <TextField
+           data-testid="search-field"
             id="outlined-name"
             label="database"
             className={classes.textField}
@@ -86,10 +87,10 @@ export default function SearchForm(props) {
             variant="outlined"
             name="email"
           /> */}
-          <Button color="blue" type="submit">
+          <Button  data-testid="submit" color="blue" type="submit">
             Submit
           </Button>
-          <Button color="red" onClick={clearForm}>
+          <Button data-testid="clear" color="red" onClick={clearForm}>
             Clear
           </Button>
         </fieldset>
