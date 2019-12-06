@@ -11,6 +11,7 @@ app.use(cors());
 
 const players = data.map((player, index) => ({ ...player, id: index }));
 
+
 app.get('/api/players', (req, res) => {
   res.send(players);
 });
